@@ -17,7 +17,7 @@ do
 	if [ ${M} == 1 ];then
 		echo '''
 		
-		Congratualtion! The simulation task normally finished
+		Congratulation! The simulation task normally finished
 		
 		'''
 		break
