@@ -4,4 +4,4 @@ You should execute this script in the same directory of your simulation task.
 The name of tpr should be xx_x and not be same as the system process.
 
 
-Usage bash auto_connect.bsh xx_x
+Usage: bash auto_connect.bsh xx_x
