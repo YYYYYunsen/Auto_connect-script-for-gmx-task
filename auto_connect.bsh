@@ -1,0 +1,32 @@
+#!/bin/bash
+# written by jianzhong zhu, 17/01/2022 and optimized by Yunsen Zhang, 21/04/2022
+echo '''
+		This script is used to keep running a gmx task automatically when it stopped out of no reason.
+		Please run this script at the same working directory as where the mdrun runs.
+	'''
+tpr="$1"
+Judge=true
+i=0
+while ${Judge}
+do
+	N=`ps -aux | grep "$tpr" | wc -l`
+	if [ ${N} != 2 ];then
+		echo "starting running from the checkpoint..."
+		gmx mdrun -deffnm $tpr -v -ntmpi 1 -ntomp 8 -pin on -cpi $tpr.cpt -update  gpu
+	fi
+	M=`cat "$tpr".log | grep Performance | wc -l`
+	if [ ${M} == 1 ];then
+		echo '''
+		
+		Congratulation! The simulation task normally finished
+		
+		'''
+		break
+	fi 
+	sleep 20s
+	let i++
+	if [ $(( ${i} % 50000 )) -eq 0 ];then
+		echo "This is cycle ${i}, it is not time, please wait!"
+	fi
+	
+done	
