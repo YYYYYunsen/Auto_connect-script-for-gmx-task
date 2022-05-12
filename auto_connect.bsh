@@ -1,5 +1,5 @@
 #!/bin/bash
-# written by jianzhong zhu, 17/01/2022 and optimized by Yunsen Zhang, 21/04/2022
+# written by jianzhong zhu, 17/01/2022 and optimized by Yunsen Zhang, 12/05/2022
 echo '''
 		This script is used to keep running a gmx task automatically when it stopped out of no reason.
 		Please run this script at the same working directory as where the mdrun runs.
